@@ -67,7 +67,7 @@ img {
   width: 1112px;
   height: 640px;
 
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .fade-out-left {
@@ -153,6 +153,7 @@ img {
 
 .fade-in {
   animation: fadeIn 0.5s forwards;
+  transition: opacity 2.5s ease;
 }
 
 @keyframes fadeIn {
@@ -163,6 +164,7 @@ img {
     opacity: 1;
   }
 }
+
 .fade-out {
   animation: fadeOut 0.5s forwards;
 }

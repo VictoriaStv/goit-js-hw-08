@@ -138,16 +138,6 @@ function showModal(imageUrl, altText) {
 
   function showPrevImage() {
     currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    updateModalImage();
-  }
-
-  function showNextImage() {
-    currentIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-    updateModalImage();
-  }
-
-  function showPrevImage() {
-    currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     updateModalImage("right");
   }
 
@@ -186,7 +176,12 @@ function showModal(imageUrl, altText) {
 
       setTimeout(() => {
         caption.textContent = description;
-        caption.classList.add("visible");
+        caption.classList.remove("fade-out");
+        caption.classList.add("fade-in");
+
+        setTimeout(() => {
+          caption.classList.add("visible");
+        }, 50);
       }, 500);
 
       modal.querySelector("img").replaceWith(newImg);
@@ -201,8 +196,8 @@ function showModal(imageUrl, altText) {
         caption.classList.remove(
           direction === "left" ? "fade-out-left" : "fade-out-right"
         );
+        caption.classList.remove("fade-in");
       }, 500);
     }, 500);
   }
-
 }
