@@ -146,20 +146,50 @@ function showModal(imageUrl, altText) {
     updateModalImage();
   }
 
-  function updateModalImage() {
-    const { original, description } = images[currentIndex];
-    modal.querySelector("img").src = original;
-    modal.querySelector("img").alt = description;
+  function showPrevImage() {
+    currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    updateModalImage("right");
+  }
 
-    modal.querySelector(".modal-counter").textContent = `${currentIndex + 1}/${
-      images.length
-    }`;
+  function showNextImage() {
+    currentIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+    updateModalImage("left");
+  }
 
-    caption.classList.remove("visible");
+  function updateModalImage(direction) {
+    const img = modal.querySelector("img");
+    const caption = modal.querySelector(".modal-caption");
+
+    img.classList.add(
+      direction === "left" ? "fade-out-left" : "fade-out-right"
+    );
+    caption.classList.add(
+      direction === "left" ? "fade-out-left" : "fade-out-right"
+    );
 
     setTimeout(() => {
-      caption.textContent = description;
-      caption.classList.add("visible");
+      const { original, description } = images[currentIndex];
+
+      img.src = original;
+      img.alt = description;
+
+      modal.querySelector(".modal-counter").textContent = `${
+        currentIndex + 1
+      }/${images.length}`;
+
+      caption.classList.remove("visible");
+
+      setTimeout(() => {
+        caption.textContent = description;
+        caption.classList.add("visible");
+
+        img.classList.remove(
+          direction === "left" ? "fade-out-left" : "fade-out-right"
+        );
+        caption.classList.remove(
+          direction === "left" ? "fade-out-left" : "fade-out-right"
+        );
+      }, 500);
     }, 500);
   }
 }

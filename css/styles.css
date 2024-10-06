@@ -68,6 +68,36 @@ img {
   height: 640px;
 }
 
+.fade-out-left {
+  animation: fadeOutLeft 0.5s forwards;
+}
+
+.fade-out-right {
+  animation: fadeOutRight 0.5s forwards;
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 .modal-caption {
   font-family: var(--font-family);
   font-weight: 400;
@@ -88,6 +118,31 @@ img {
 
 .modal-caption.visible {
   opacity: 1;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .modal-close {
