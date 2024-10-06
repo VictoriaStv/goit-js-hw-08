@@ -66,6 +66,8 @@ img {
 .modal img {
   width: 1112px;
   height: 640px;
+
+  pointer-events: none; 
 }
 
 .fade-out-left {
@@ -95,6 +97,35 @@ img {
   100% {
     transform: translateX(100%);
     opacity: 0;
+  }
+}
+.fade-in-left {
+  animation: fadeInLeft 0.5s forwards;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.5s forwards;
+}
+
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 

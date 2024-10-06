@@ -170,8 +170,13 @@ function showModal(imageUrl, altText) {
     setTimeout(() => {
       const { original, description } = images[currentIndex];
 
-      img.src = original;
-      img.alt = description;
+      const newImg = document.createElement("img");
+      newImg.src = original;
+      newImg.alt = description;
+      newImg.classList.add("gallery-image");
+      newImg.classList.add(
+        direction === "left" ? "fade-in-right" : "fade-in-left"
+      );
 
       modal.querySelector(".modal-counter").textContent = `${
         currentIndex + 1
@@ -182,7 +187,14 @@ function showModal(imageUrl, altText) {
       setTimeout(() => {
         caption.textContent = description;
         caption.classList.add("visible");
+      }, 500);
 
+      modal.querySelector("img").replaceWith(newImg);
+
+      setTimeout(() => {
+        newImg.classList.remove(
+          direction === "left" ? "fade-in-right" : "fade-in-left"
+        );
         img.classList.remove(
           direction === "left" ? "fade-out-left" : "fade-out-right"
         );
@@ -192,4 +204,5 @@ function showModal(imageUrl, altText) {
       }, 500);
     }, 500);
   }
+
 }
